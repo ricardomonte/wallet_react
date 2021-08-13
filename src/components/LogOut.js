@@ -13,32 +13,17 @@ const requestOptions = {
 
 
 const LogOut = () => {
-  const [data, setData] = useState()
-  const [error, setError] = useState()
+  const [data, setData] = useState(false)
 
   const handleLogout = () => {
-    let isLoading = true;
-    fetch(url, requestOptions)
-    .then((res) => res.json())
-    .then((data) => {
-      if (isLoading) {
-        setData(data);
-        setError(null);
-      }
-    })
-    .catch((e) => {
-      if (isLoading) {
-        setError(e);
-        setData(null);
-      }
-    });
-    return () => (isLoading = false)
+    localStorage.removeItem('token');
+    setData(true)
   }
   return (
     <>
       <button className={LogoutStyle.btn} type='button' onClick={handleLogout}>Logout</button>
-      {data?.status === 'OK' ? <Redirect to='/logout' /> : null}
-      {error?.status === 'Sesion not found' ? <Errors /> : null}
+      { data && <Redirect to='/logout' /> }
+
     </>
 
   )

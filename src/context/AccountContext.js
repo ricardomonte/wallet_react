@@ -8,10 +8,11 @@ export const AccountProvider = ({children}) => {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   useEffect(() => {
+    const auth = localStorage.token;
     let isLoading = true
     const requestOptions = {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/' },
+      headers: { 'Content-Type': 'application/json', 'Authorization':  `Bearer ${auth}` },
       credentials: 'include',
     };
     fetch(url, requestOptions)

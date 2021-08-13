@@ -6,7 +6,9 @@ const useFetch = (url, options) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const auth = localStorage.token;
     let isMounted = true;
+    options['headers'] = { 'Content-Type': 'application/json', 'Authorization':  `Bearer ${auth}` },
     setLoading(true);
     fetch(url, options)
       .then((res) => res.json())

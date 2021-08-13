@@ -8,7 +8,6 @@ import FormStyle from '../styles/Forms.module.css';
 const url = 'https://willywalletapi.herokuapp.com/api/v1/sign_in';
 
 const SignInForm = () => {
-
   const [error, setError] = useState();
   const [data, setData] = useState();
   const [user, setUser] = useState({
@@ -19,8 +18,7 @@ const SignInForm = () => {
   const notificationError = () => toast.error(error ? error : "Email or Password missing")
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/' },
-    credentials: 'include',
+    headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(user)
   };
 
@@ -37,7 +35,10 @@ const SignInForm = () => {
       return 
     }
     fetch(url, requestOptions)
-      .then(response => response.json())
+      .then(response => {
+        response.json()
+        localStorage.setItem('token', response.headers['access-token']);
+      })
       .then(data => {
         if (data.message === 'User not found') {
           throw new Error(data.message) 

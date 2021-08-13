@@ -7,7 +7,7 @@ const Home = () => {
   const [authenticated, setAuthenticated] = useState(false)
 
   const readCookie = () => {
-    if(document.cookie.indexOf('user') > -1) {
+    if(localStorage.token > 0) {
       setAuthenticated(true);
     }
   }

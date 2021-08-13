@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,6 +7,7 @@ import FormStyle from '../styles/Forms.module.css';
 const url = 'https://willywalletapi.herokuapp.com/api/v1/sign_up';
 
 const SignUpForm = () => {
+  const [auth, setAuth] = useState(null)
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [user, setUser] = useState({
@@ -15,10 +16,14 @@ const SignUpForm = () => {
     email: '',
     password: '',
   });
+
+  useEffect(() => {
+    setAuth(localStorage.token)
+  }, [])
+
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/' },
-    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user)
   };
 
@@ -36,7 +41,10 @@ const SignUpForm = () => {
       return 
     }
     fetch(url, requestOptions)
-      .then(response => response.json())
+      .then(response => {
+        response.json()
+        localStorage.setItem('token', response.headers['access-token']);
+      })
       .then(data => {
         if (data.message === "User couldnt be created") {
           throw new Error(data.message) 
