@@ -20,7 +20,6 @@ const SignInForm = () => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/sign_in' },
-    credentials: 'include',
     body: JSON.stringify(user)
   };
 
