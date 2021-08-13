@@ -11,7 +11,7 @@ const useFetch = (url) => {
     let isMounted = true;
     setLoading(true);
     axios.get(url, {
-      headers: { Authorization: `Bearer ${auth}` }
+      headers: { 'Authorization': `Bearer ${auth}`, 'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json' }
     }).then((res) => res.json())
       .then((data) => {
         if (isMounted) {

@@ -28,7 +28,7 @@ const SignInForm = () => {
       notificationError()
       return 
     }
-    axios.post(url, user)
+    axios.post(url, user, {headers: {'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json' }})
       .then(response => {
         localStorage.setItem('token', response.headers['access-token']);
       })

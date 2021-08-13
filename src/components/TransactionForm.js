@@ -80,7 +80,7 @@ const TransactionForm = () => {
                       };
     setUserTransaction(updateUser)
     axios.post(url, userTransaction, { 
-      headers: {'Authorization': `Bearer ${auth}`  }
+      headers: {'Authorization': `Bearer ${auth}`, 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
     }).then(response => response.json())
       .then(data => setMessage(data))
       .catch((e) => console.error(e))

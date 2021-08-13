@@ -15,7 +15,7 @@ export const AccountProvider = ({children}) => {
       
 
     axios.get(url, {
-      headers: { Authorization: `Bearer ${auth}` }
+      headers: { 'Authorization': `Bearer ${auth}`, 'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json' }
     }).then(response => response.json())
       .then(data => isLoading && setData(data.accounts))
       .catch((e) => isLoading && setError(e))
