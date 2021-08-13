@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content from ByeUser matches snapshot 1`] = `
+<div>
+  <div
+    class="loading_errors"
+  >
+    <h3
+      class="mdc-typography mdc-typography--headline3"
+    >
+      See you soon
+    </h3>
+    <button
+      type="button"
+    >
+      Return Home
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content from BtcAmount matches snapshot 1`] = `
+<div>
+  <div
+    class="mdc-card mdc-elevation--z4 content_size"
+  >
+    <div
+      class="mdc-card__primary-action cardContent"
+    >
+      <h6
+        class="mdc-typography mdc-typography--headline6"
+      >
+        Available funds:
+      </h6>
+    </div>
+    <div
+      class="mdc-card__primary-action cardContent"
+    >
+      <h5
+        class="mdc-typography mdc-typography--headline5"
+      >
+        0.20000000 BTC
+      </h5>
+    </div>
+  </div>
+</div>
+`;
