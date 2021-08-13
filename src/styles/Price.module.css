@@ -1,0 +1,10 @@
+.content {
+  width: 100%;
+  display: flex;
+  column-gap: 1em; 
+}
+
+.price {
+  font-weight: 900;
+  color: #a840d8;
+}

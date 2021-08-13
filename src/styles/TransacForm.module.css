@@ -1,0 +1,11 @@
+.received {
+  text-align: center;
+  color: #8725c0;
+}
+
+.containerTotal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
