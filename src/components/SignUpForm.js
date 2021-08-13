@@ -1,5 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FormStyle from '../styles/Forms.module.css';
@@ -7,7 +8,6 @@ import FormStyle from '../styles/Forms.module.css';
 const url = 'https://willywalletapi.herokuapp.com/api/v1/sign_up';
 
 const SignUpForm = () => {
-  const [auth, setAuth] = useState(null)
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [user, setUser] = useState({
@@ -16,16 +16,6 @@ const SignUpForm = () => {
     email: '',
     password: '',
   });
-
-  useEffect(() => {
-    setAuth(localStorage.token)
-  }, [])
-
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(user)
-  };
 
   const notificationError = () => toast.error(error ? error : "One or more parameters are empty")
   const handleChange = (event) => {
@@ -40,9 +30,8 @@ const SignUpForm = () => {
       notificationError()
       return 
     }
-    fetch(url, requestOptions)
+    axios.post(url, user)
       .then(response => {
-        response.json()
         localStorage.setItem('token', response.headers['access-token']);
       })
       .then(data => {

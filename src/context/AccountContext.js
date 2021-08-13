@@ -1,4 +1,5 @@
 import React, {createContext, useState, useEffect, useContext } from 'react'
+import axios from 'axios';
 
 const url = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
 const AccountContext = createContext({});
@@ -10,13 +11,12 @@ export const AccountProvider = ({children}) => {
   useEffect(() => {
     const auth = localStorage.token;
     let isLoading = true
-    const requestOptions = {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json', 'Authorization':  `Bearer ${auth}` },
-      credentials: 'include',
-    };
-    fetch(url, requestOptions)
-      .then(response => response.json())
+
+      
+
+    axios.get(url, {
+      headers: { Authorization: `Bearer ${auth}` }
+    }).then(response => response.json())
       .then(data => isLoading && setData(data.accounts))
       .catch((e) => isLoading && setError(e))
     return () => (isLoading = false)

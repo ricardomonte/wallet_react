@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const useFetch = (url) => {
   const [loading, setLoading] = useState(false);
@@ -8,11 +9,10 @@ const useFetch = (url) => {
   useEffect(() => {
     const auth = localStorage.token;
     let isMounted = true;
-    const options = { method: 'GET',
-                      headers: {'Content-Type': 'application/json', 'Authorization':  `Bearer ${auth}` }};
     setLoading(true);
-    fetch(url, options)
-      .then((res) => res.json())
+    axios.get(url, {
+      headers: { Authorization: `Bearer ${auth}` }
+    }).then((res) => res.json())
       .then((data) => {
         if (isMounted) {
           setData(data);

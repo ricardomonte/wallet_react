@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect} from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import Loading from './Loading';
 import Errors from './Error';
 import UsdAmount from './UsdAmount';
@@ -33,13 +33,6 @@ const TransactionForm = () => {
   useEffect(() => {
     setAuth(localStorage.token)
   })
-
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json',  'Authorization': `Bearer ${auth}`  },
-    body: JSON.stringify(userTransaction)
-  };
-
 
   
   const resetAmount = () => {
@@ -86,8 +79,9 @@ const TransactionForm = () => {
                         : userTransaction.amount_receive.toFixed(2)
                       };
     setUserTransaction(updateUser)
-    fetch(url, requestOptions)
-      .then(response => response.json())
+    axios.post(url, userTransaction, { 
+      headers: {'Authorization': `Bearer ${auth}`  }
+    }).then(response => response.json())
       .then(data => setMessage(data))
       .catch((e) => console.error(e))
   }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FormStyle from '../styles/Forms.module.css';
@@ -16,12 +16,6 @@ const SignInForm = () => {
   });
 
   const notificationError = () => toast.error(error ? error : "Email or Password missing")
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify(user)
-  };
-
 
   const handleChange = (event) => {
     const updateUser = { ...user, [event.target.name]: event.target.value };
@@ -34,9 +28,8 @@ const SignInForm = () => {
       notificationError()
       return 
     }
-    fetch(url, requestOptions)
+    axios.post(url, user)
       .then(response => {
-        response.json()
         localStorage.setItem('token', response.headers['access-token']);
       })
       .then(data => {
