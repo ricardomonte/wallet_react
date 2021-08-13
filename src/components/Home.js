@@ -1,19 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import Dashboard from './Dashboard';
 import HomeStyle from '../styles/Home.module.css';
-
-// import { AccountProvider } from '../context/AccountContext';
-
-
 
 const Home = () => {
   const [authenticated, setAuthenticated] = useState(false)
 
   const readCookie = () => {
-    console.log(document.cookie.indexOf('user'))
-    console.log(Cookies.get('user'))
     if(document.cookie.indexOf('user') > -1) {
       setAuthenticated(true);
     }

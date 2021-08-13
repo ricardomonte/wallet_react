@@ -11,7 +11,7 @@ import TopBar from './TopBar';
 import { Link } from 'react-router-dom';
 import DashStyle from '../styles/Dashboard.module.css';
 
-const url = 'http://localhost:4000/api/v1/accounts';
+const url = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
 const requestOptions = {
   method: 'GET',
   headers: { 'Content-Type': 'application/json' },
@@ -46,15 +46,12 @@ const Dashboard = () => {
               <UsdAmount usdAmount={data?.accounts.amount_usd} />
               <BtcAmount btcAmount={data?.accounts.amount_btc} />
             </div>
-            <div className={DashStyle.contentTransaction}>
-              
-              
+            <div className={DashStyle.contentTransaction}> 
               <MyTransactions />
             </div>
           </div>
         }
-        <button type="button" onClick={transactionChange} className={DashStyle.btn}><Link to="/transaction" className={DashStyle.link}>New Transaction</Link></button>
-        
+        <button type="button" onClick={transactionChange} className={DashStyle.btn}><Link to="/transaction" className={DashStyle.link}>New Transaction</Link></button> 
       </div>
     </AccountProvider>
   );

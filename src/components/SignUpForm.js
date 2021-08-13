@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FormStyle from '../styles/Forms.module.css';
 
-const url = 'http://localhost:4000/api/v1/sign_up';
+const url = 'https://willywalletapi.herokuapp.com/api/v1/sign_up';
 
 const SignUpForm = () => {
   const [data, setData] = useState(null);
@@ -81,7 +81,6 @@ const SignUpForm = () => {
       draggable
       pauseOnHover />
       {data?.message === 'User successfully created' ? <Redirect to='/' /> : null }
-      {/* {error?.message && notificationError } */}
     </div>
   );
 };

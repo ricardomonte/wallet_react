@@ -1,6 +1,6 @@
 import React, {createContext, useState, useEffect, useContext } from 'react'
 
-const url = 'http://localhost:4000/api/v1/accounts';
+const url = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
 const AccountContext = createContext({});
 
 
@@ -21,7 +21,7 @@ export const AccountProvider = ({children}) => {
     return () => (isLoading = false)
   }, [])
   return (
-    <AccountContext.Provider value={{data}}>
+    <AccountContext.Provider value={{data, error}}>
       {children}
     </AccountContext.Provider>
   )

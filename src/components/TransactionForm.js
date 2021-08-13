@@ -14,8 +14,8 @@ import FormStyle from '../styles/Forms.module.css';
 import TranStyle from '../styles/TransacForm.module.css';
 const formatCurrency = require('format-currency')
 
-const url = 'http://localhost:4000/api/v1/transactions';
-const urld = 'http://localhost:4000/api/v1/accounts';
+const url = 'https://willywalletapi.herokuapp.com/api/v1/transactions';
+const urld = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
 const requestOptionsD = {
   method: 'GET',
   headers: { 'Content-Type': 'application/json' },

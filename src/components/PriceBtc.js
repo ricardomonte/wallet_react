@@ -12,7 +12,6 @@ const PriceBtc = () => {
   const { data } = useAccount()
 
   const amountPriceBtc = calculateAmount(data?.value_btc.bpi.USD.rate_float, "USD", 1)
-  console.log(data)
   return(
     <Carousel autoPlay={true} infiniteLoop={true} showArrows={false} showIndicators={false} interval={5000} transitionTime={5000} showThumbs={false}>
       <div className={PriceStyle.content}>

@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Errors from './Error';
 import LogoutStyle from '../styles/Logout.module.css'
 
-const url = 'http://localhost:4000/api/v1/sign_out';
+const url = 'https://willywalletapi.herokuapp.com/api/v1/sign_out';
 const requestOptions = {
   method: 'DELETE',
   headers: { 'Content-Type': 'application/json' },
