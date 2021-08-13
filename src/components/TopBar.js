@@ -6,7 +6,7 @@ const TopBar = ({userName}) => (
 
   <div className={TopBarStyle.topBar}>
     <h2 className={TopBarStyle.text}>
-      Welcome to your WallyWallet
+      Welcome to your WillyWallet
     </h2>
     <div className={TopBarStyle.userBtnContainer}>
       <h3 className={TopBarStyle.text}>{userName}</h3>
