@@ -19,7 +19,7 @@ const SignInForm = () => {
   const notificationError = () => toast.error(error ? error : "Email or Password missing")
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/sign_in' },
     credentials: 'include',
     body: JSON.stringify(user)
   };

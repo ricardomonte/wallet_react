@@ -18,7 +18,7 @@ const url = 'https://willywalletapi.herokuapp.com/api/v1/transactions';
 const urld = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
 const requestOptionsD = {
   method: 'GET',
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/transaction' },
   credentials: 'include',
 };
 

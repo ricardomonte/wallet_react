@@ -14,7 +14,7 @@ import DashStyle from '../styles/Dashboard.module.css';
 const url = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
 const requestOptions = {
   method: 'GET',
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/' },
   credentials: 'include',
 };
 

@@ -6,7 +6,7 @@ import LogoutStyle from '../styles/Logout.module.css'
 const url = 'https://willywalletapi.herokuapp.com/api/v1/sign_out';
 const requestOptions = {
   method: 'DELETE',
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/' },
   credentials: 'include',
 };
 

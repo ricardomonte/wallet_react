@@ -17,7 +17,7 @@ const SignUpForm = () => {
   });
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/sign_up' },
     credentials: 'include',
     body: JSON.stringify(user)
   };
