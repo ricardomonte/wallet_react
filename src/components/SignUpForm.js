@@ -17,7 +17,7 @@ const SignUpForm = () => {
   });
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Origin' : 'https://willywalletapi.herokuapp.com' },
     credentials: 'include',
     body: JSON.stringify(user)
   };
