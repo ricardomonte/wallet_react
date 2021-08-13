@@ -10,7 +10,8 @@ const formatCurrency = require('format-currency')
 const url = 'http://localhost:4000/api/v1/transactions';
 const requestOptions = {
   method: 'GET',
-  headers: { 'Content-Type': 'application/json'},
+  headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/' },
+  credentials: 'include',
 };
 
 const MyTransactions = () => {

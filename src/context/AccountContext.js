@@ -11,7 +11,8 @@ export const AccountProvider = ({children}) => {
     let isLoading = true
     const requestOptions = {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Origin': 'https://willywallet.herokuapp.com/' },
+      credentials: 'include',
     };
     fetch(url, requestOptions)
       .then(response => response.json())
