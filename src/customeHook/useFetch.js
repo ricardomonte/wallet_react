@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = (url, options) => {
+const useFetch = (url) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -8,7 +8,8 @@ const useFetch = (url, options) => {
   useEffect(() => {
     const auth = localStorage.token;
     let isMounted = true;
-    options.headers = { 'Content-Type': 'application/json', 'Authorization':  `Bearer ${auth}` },
+    const options = { method: 'GET',
+                      headers: {'Content-Type': 'application/json', 'Authorization':  `Bearer ${auth}` }};
     setLoading(true);
     fetch(url, options)
       .then((res) => res.json())

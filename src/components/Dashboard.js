@@ -12,15 +12,12 @@ import { Link } from 'react-router-dom';
 import DashStyle from '../styles/Dashboard.module.css';
 
 const url = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
-let requestOptions = {
-  method: 'GET',
-};
 
 
 const Dashboard = () => {
   const [showTransaction, setShowTransaction] = useState(false)
 
-  const {loading, data, error } = useFetch(url, requestOptions )
+  const {loading, data, error } = useFetch(url)
   if (loading) return (<Loading />);
   if (error) return (<Errors />);
   const transactionChange = () => {

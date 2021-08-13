@@ -8,12 +8,9 @@ import MyTransactionStyle from '../styles/DetailTrans.module.css'
 const formatCurrency = require('format-currency')
 
 const url = 'http://localhost:4000/api/v1/transactions';
-const requestOptions = {
-  method: 'GET',
-};
 
 const MyTransactions = () => {
-  const {loading, data, error } = useFetch(url, requestOptions)
+  const {loading, data, error } = useFetch(url)
   if (loading) return (<Loading />);
   if (error) return (<Errors />);
   const format = (coin) => {

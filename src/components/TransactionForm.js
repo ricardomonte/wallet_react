@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Redirect } from 'react-router-dom';
 import Loading from './Loading';
 import Errors from './Error';
@@ -16,15 +16,11 @@ const formatCurrency = require('format-currency')
 
 const url = 'https://willywalletapi.herokuapp.com/api/v1/transactions';
 const urld = 'https://willywalletapi.herokuapp.com/api/v1/accounts';
-const requestOptionsD = {
-  method: 'GET'
-};
-
 
 const TransactionForm = () => {
 
-  const { loading, data, error } = useFetch(urld, requestOptionsD)
-
+  const { loading, data, error } = useFetch(urld)
+  const [auth, setAuth] = useState(null)
   const [message, setMessage] = useState(null);
   const [userTransaction, setUserTransaction] = useState({
     coin_to_send: '',
@@ -34,10 +30,13 @@ const TransactionForm = () => {
     user_id: 0,
   });
 
+  useEffect(() => {
+    setAuth(localStorage.token)
+  })
+
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
+    headers: { 'Content-Type': 'application/json',  'Authorization': `Bearer ${auth}`  },
     body: JSON.stringify(userTransaction)
   };
 
